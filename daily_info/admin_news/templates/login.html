@@ -1,0 +1,31 @@
+{% extends "mainpages/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section class="vh-100  bg-gradient bg-dark ">
+    <div class="container py-5 h-100 ">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-light text-dark" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <div class="pb-2">
+  
+            <form method="POST" class="form-group">
+                <p>{{message}}</p>
+                {% csrf_token %}
+                {{ form |crispy }}
+                <button type="submit" class="btn btn-outline-success w-50">Login</button>
+            </form>
+            <p>Not a Member <a href="{%url 'registeradmin' %}">Register?</a></p>
+        </div>
+          
+    </div>
+</div>
+
+</div>
+  </div>
+</div>
+</section>
+{% endblock %}

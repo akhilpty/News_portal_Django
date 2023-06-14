@@ -1,0 +1,35 @@
+{% extends "mainpages/base.html" %}
+
+{% block content %}
+{% block nav %}{% include 'mainpages/navbar.html' %}{% endblock nav %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 mx-auto mt-5">
+            <h1 class="text-center text-dark" style="font-size: 6vw"><b>MY NEWS</b></h1>
+            {% for news in mydetail %}
+            {%if current_user == news.user_id.id%}
+            <div class="card">
+
+          
+               
+                <div class="card-body">
+                    <h1 class="card-title text-center font-weight-bold "><a href="{% url 'detailnews' id=news.id %}" class="text-decoration-none " style="color: black;">{{ news.title }}</a></h1>
+                    
+                </div>
+                <a href="{% url 'updatenews' id=news.id %}" class="btn btn-warning w-50 mx-auto mb-3">Update News</a>
+                <a href="{% url 'deletenews' id=news.id %}" class="btn btn-danger w-50 mx-auto">Delete News</a>
+                <hr/>
+                {% endif %}
+                {% endfor %}
+              
+                
+                
+                
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

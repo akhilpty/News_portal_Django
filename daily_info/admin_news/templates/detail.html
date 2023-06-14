@@ -1,0 +1,31 @@
+{% extends "mainpages/base.html" %}
+
+{% block content %}
+{% block nav %}{% include 'mainpages/navbar.html' %}{% endblock nav %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-9 mx-auto mt-3">
+           
+            <div class="card">
+              
+                <img src="{{ News_sel.photo.url }}" alt="Photo" class="card-img-top">
+                <div class="card-body">
+                    <h1 class="card-title text-center font-weight-bold" style="color: gold;;">{{ News_sel.title }}</h1>
+                    <p class="card-text font-weight-bold">{{ News_sel.content }}</p>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <video class="embed-responsive-item" src="{{ News_sel.video.url }}" controls></video>
+                    </div>
+                </div>
+             
+                {%if current_user == News_sel.user_id.id%}
+              
+                <a href="{% url 'updatenews' id=News_sel.id %}" class="btn btn-warning w-50 mx-auto mb-3">Update News</a>
+                <a href="{% url 'deletenews' id=News_sel.id %}" class="btn btn-danger w-50 mx-auto">Delete News</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
